@@ -1,265 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WispVelvet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --purple: #8b5cf6;
-            --dark: #0a0514;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WispVelvet</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-        html { scroll-behavior: smooth; }
+<style>
+:root {
+    --purple: #c084fc;
+    --dark: #0a0514;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark);
-            color: #e8d4ff;
-            overflow-x: hidden;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-        /* Particles */
-        .particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: #e8d4ff;
+    overflow-x: hidden;
+}
 
-        .particle {
-            position: absolute;
-            background: #c084fc;
-            border-radius: 50%;
-            opacity: 0;
-            animation: float linear infinite, fadeInOut linear infinite, driftTwinkle linear infinite;
-        }
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,5,20,0.9);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
 
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0.6); }
-            100% { transform: translateY(-100px) scale(1.4); }
-        }
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+}
 
-        @keyframes fadeInOut {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 0.6; }
-        }
+nav a {
+    margin-left: 2rem;
+    color: #e8d4ff;
+    text-decoration: none;
+}
 
-        @keyframes driftTwinkle {
-            0% { transform: translateX(0) scale(1); opacity: 0.2; }
-            50% { transform: translateX(10px) scale(1.2); opacity: 0.6; }
-            100% { transform: translateX(-10px) scale(0.9); opacity: 0; }
-        }
+nav a:hover { color: var(--purple); }
 
-        /* Header */
-        header {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 1.5rem 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 5, 20, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-        }
+/* SECTIONS */
+section {
+    min-height: 100vh;
+    padding: 120px 8% 80px;
+}
 
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 2.1rem;
-            letter-spacing: 4px;
-            color: #d8b4fe;
-        }
+/* HERO */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-        nav a {
-            color: #e8d4ff;
-            text-decoration: none;
-            margin-left: 2.5rem;
-            font-weight: 500;
-        }
+    min-height: 100vh;
+}
 
-        nav a:hover { color: #c084fc; }
+.hero h1 {
+    font-family: 'Cinzel';
+    font-size: 6rem;
+    letter-spacing: 10px;
 
-        /* Sections */
-        section {
-            min-height: 100vh;
-            padding: 140px 8% 100px;
-            position: relative;
-            z-index: 2;
-            background: linear-gradient(to bottom, rgba(10,5,20,0.9), rgba(10,5,20,0.7));
-        }
+    text-shadow: 0 0 80px rgba(192,132,252,0.7);
+}
 
-        /* Hero */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 100vh;
-            padding: 0 8%;
-            position: relative;
-            z-index: 2;
-        }
+.hero p {
+    font-size: 1.4rem;
+    margin: 1rem 0 2rem;
+}
 
-        .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 7.5rem;
-            letter-spacing: 12px;
-            text-shadow: 0 0 80px rgba(192,132,252,0.8), 0 0 150px rgba(192,132,252,0.3);
-            animation: pulseGlow 3s infinite alternate;
-        }
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 16px 50px;
+    border: 2px solid var(--purple);
+    border-radius: 50px;
+    text-decoration: none;
+    color: #e8d4ff;
+    transition: 0.3s;
+}
 
-        @keyframes pulseGlow {
-            0% { text-shadow: 0 0 80px rgba(192,132,252,0.6), 0 0 150px rgba(192,132,252,0.2); }
-            100% { text-shadow: 0 0 120px rgba(192,132,252,1), 0 0 200px rgba(192,132,252,0.4); }
-        }
+.btn:hover {
+    background: var(--purple);
+    color: #0a0514;
+    box-shadow: 0 0 40px rgba(192,132,252,0.8);
+}
 
-        .hero p {
-            font-size: 1.6rem;
-            max-width: 720px;
-            opacity: 0.9;
-            margin: 1rem 0 2rem;
-        }
+/* TITLES */
+h2 {
+    font-family: 'Cinzel';
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 18px 60px;
-            border: 2px solid #c084fc;
-            color: #e8d4ff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            transition: all 0.4s;
-            animation: floatBtn 3s infinite alternate;
-            margin-top: 1rem;
-        }
+/* CONTENT */
+.content {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    line-height: 1.8;
+}
 
-        .btn:hover {
-            background: #c084fc;
-            color: #0a0514;
-            box-shadow: 0 0 50px rgba(192,132,252,0.9);
-        }
+/* STREAM */
+iframe {
+    border-radius: 20px;
+    margin-top: 2rem;
+}
 
-        @keyframes floatBtn {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-8px); }
-        }
+/* LINKS */
+.link-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
 
-        h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #d8b4fe;
-        }
+/* RULES */
+ul {
+    text-align: left;
+    max-width: 600px;
+    margin: auto;
+    line-height: 2;
+}
 
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.8;
-            font-size: 1.2rem;
-        }
+/* PARTICLES */
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
 
-        ul {
-            line-height: 2.4;
-            font-size: 1.15rem;
-        }
+.particle {
+    position: absolute;
+    background: var(--purple);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 20s linear infinite;
+}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 4.5rem; letter-spacing: 6px; }
-            nav a { margin-left: 1.2rem; }
-        }
-    </style>
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+    .hero h1 { font-size: 3.5rem; }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="particles" id="particles"></div>
+<div class="particles" id="particles"></div>
 
-    <header>
-        <div class="logo">WISPVELVET</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#schedule">Schedule</a>
-            <a href="#rules">Rules</a>
-        </nav>
-    </header>
+<header>
+    <div class="logo">WISPVELVET</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#stream">Stream</a>
+        <a href="#about">About</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#links">Links</a>
+    </nav>
+</header>
 
-    <!-- HERO -->
-    <section id="home" class="hero">
-        <h1>WISPVELVET</h1>
-        <p>soft goth dreamer lost in moonlight</p>
-        <a href="#about" class="btn">Enter the Velvet Night</a>
-    </section>
+<!-- HERO -->
+<section id="home" class="hero">
+    <h1>WISPVELVET</h1>
+    <p>soft goth dreamer lost in moonlight</p>
+    <a href="#stream" class="btn">Watch Me Live</a>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="content">
-            <p>Heyyy~ I'm WispVelvet, a soft-spoken gothic trans woman floating through the night like a little velvet wisp 🌹</p>
-            <p>I’m all about cozy chaos, deep late-night talks, story-rich games, and just vibing in the moonlight with you.</p>
-            <p>Come chill with me, laugh, get emotional, and feel safe in my little corner of the internet. I’m really happy you’re here ♡</p>
+<!-- STREAM -->
+<section id="stream">
+    <h2>Live Stream</h2>
+    <div class="content">
+        <p>Join me live in the velvet night ♡</p>
+
+        <iframe
+            src="https://player.twitch.tv/?channel=wispvelvet&parent=localhost"
+            height="400"
+            width="100%"
+            allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>About Me</h2>
+    <div class="content">
+        <p>Heyyy~ I'm WispVelvet, a soft-spoken gothic trans woman floating through the night 🌹</p>
+        <p>Cozy chaos, deep talks, story games, and late-night vibes.</p>
+        <p>This is a safe little corner of the internet — I’m really glad you’re here ♡</p>
+    </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+    <h2>Schedule</h2>
+    <div class="content">
+        <p>🖤 Monday, Wednesday & Friday — 8PM</p>
+        <p>Times in your local timezone</p>
+    </div>
+</section>
+
+<!-- LINKS -->
+<section id="links">
+    <h2>Join Me</h2>
+    <div class="content">
+        <div class="link-buttons">
+            <a href="https://www.twitch.tv/wispvelvet" class="btn">Twitch</a>
+            <a href="https://discord.gg/R5GasE7aXp" class="btn">Discord</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- SCHEDULE -->
-    <section id="schedule">
-        <h2>Schedule</h2>
-        <div class="content" style="text-align:center;">
-            <p style="font-size:1.4rem;">🖤 Streaming every Monday, Wednesday & Friday at 8PM</p>
-            <p>Times in your local timezone.</p>
-            <p style="margin-top:3rem; opacity:0.8;">
-                Surprise late-night streams also happen when the mood hits~<br>
-                Turn on notifications so you never miss me ♡
-            </p>
-        </div>
-    </section>
+<!-- RULES -->
+<section id="rules">
+    <h2>Chat Rules</h2>
+    <ul>
+        <li>Be kind and respectful</li>
+        <li>No spoilers or backseating</li>
+        <li>No toxicity</li>
+        <li>Keep the vibe safe 🌹</li>
+    </ul>
+</section>
 
-    <!-- RULES -->
-    <section id="rules">
-        <h2>Chat Rules</h2>
-        <div class="content" style="max-width:700px; margin:0 auto;">
-            <ul>
-                <li>Be kind and respectful</li>
-                <li>No spoilers or heavy backseating unless I ask</li>
-                <li>No hate, drama, or toxicity</li>
-                <li>Keep the velvet garden peaceful 🌹</li>
-                <li>Have fun and enjoy the night</li>
-            </ul>
-            <p style="text-align:center; margin-top:4rem; opacity:0.7;">
-                Break the rules = timeout or ban
-            </p>
-        </div>
-    </section>
+<!-- PARTICLES SCRIPT -->
+<script>
+function createParticle() {
+    const p = document.createElement('div');
+    p.classList.add('particle');
 
-    <!-- PARTICLE SCRIPT -->
-    <script>
-        function createParticle() {
-            const p = document.createElement('div');
-            p.classList.add('particle');
-            const size = Math.random() * 6 + 3;
-            p.style.width = `${size}px`;
-            p.style.height = `${size}px`;
-            p.style.left = `${Math.random() * 100}vw`;
-            
-            const duration = Math.random() * 25 + 18;
-            const driftDuration = duration * (0.8 + Math.random() * 0.4);
-            
-            p.style.animationDuration = `${duration}s, ${duration}s, ${driftDuration}s`;
-            document.getElementById('particles').appendChild(p);
-            
-            setTimeout(() => p.remove(), duration * 1000);
-        }
+    const size = Math.random() * 5 + 2;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
 
-        setInterval(createParticle, 120);
-        for(let i = 0; i < 35; i++) setTimeout(createParticle, i * 100);
-    </script>
+    p.style.left = Math.random() * 100 + 'vw';
+
+    document.getElementById('particles').appendChild(p);
+
+    setTimeout(() => p.remove(), 20000);
+}
+
+setInterval(createParticle, 300);
+</script>
 
 </body>
 </html>
