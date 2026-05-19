@@ -49,7 +49,10 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover { color: var(--purple); }
+nav a:hover { 
+    color: var(--purple); 
+    text-shadow: 0 0 10px var(--purple);
+}
 
 /* SECTIONS */
 section {
@@ -64,7 +67,6 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-
     min-height: 100vh;
 }
 
@@ -72,7 +74,6 @@ section {
     font-family: 'Cinzel';
     font-size: 6rem;
     letter-spacing: 10px;
-
     text-shadow: 0 0 80px rgba(192,132,252,0.7);
 }
 
@@ -114,10 +115,46 @@ h2 {
     line-height: 1.8;
 }
 
-/* STREAM */
+/* STREAM LAYOUT */
+.stream-flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.player {
+    width: 700px;
+    height: 400px;
+}
+
+.chat {
+    width: 300px;
+    height: 400px;
+}
+
+.stream-wrapper {
+    position: relative;
+}
+
 iframe {
     border-radius: 20px;
-    margin-top: 2rem;
+}
+
+/* OFFLINE OVERLAY */
+.offline-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10,5,20,0.85);
+    padding: 20px 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(192,132,252,0.6);
+    display: none;
+    text-align: center;
 }
 
 /* LINKS */
@@ -135,6 +172,12 @@ ul {
     max-width: 600px;
     margin: auto;
     line-height: 2;
+}
+
+/* LIVE STATUS */
+#liveStatus {
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 /* PARTICLES */
@@ -163,6 +206,7 @@ ul {
 /* MOBILE */
 @media(max-width:768px) {
     .hero h1 { font-size: 3.5rem; }
+    .player, .chat { width: 100%; }
 }
 </style>
 </head>
@@ -195,12 +239,29 @@ ul {
     <div class="content">
         <p>Join me live in the velvet night ♡</p>
 
-        <iframe
-          src="https://player.twitch.tv/?channel=wispvelvet&parent=wispvelvet-spec.github.io"
-          height="400"
-          width="100%"
-          allowfullscreen>
-</iframe>
+        <p id="liveStatus">⚫ Offline</p>
+
+        <div class="stream-flex">
+
+            <div class="stream-wrapper">
+                <iframe
+                  class="player"
+                  src="https://player.twitch.tv/?channel=wispvelvet&parent=wispvelvet-spec.github.io"
+                  allowfullscreen>
+                </iframe>
+
+                <div class="offline-overlay" id="offlineOverlay">
+                    🌙 The velvet night rests...<br>
+                    come back when I'm live ♡
+                </div>
+            </div>
+
+            <iframe
+              class="chat"
+              src="https://www.twitch.tv/embed/wispvelvet/chat?parent=wispvelvet-spec.github.io">
+            </iframe>
+
+        </div>
     </div>
 </section>
 
@@ -254,15 +315,29 @@ function createParticle() {
     const size = Math.random() * 5 + 2;
     p.style.width = size + 'px';
     p.style.height = size + 'px';
-
     p.style.left = Math.random() * 100 + 'vw';
 
     document.getElementById('particles').appendChild(p);
 
     setTimeout(() => p.remove(), 20000);
 }
-
 setInterval(createParticle, 300);
+</script>
+
+<!-- LIVE STATUS SCRIPT -->
+<script>
+fetch("https://decapi.me/twitch/uptime/wispvelvet")
+  .then(res => res.text())
+  .then(data => {
+    if (!data.includes("offline")) {
+      document.getElementById("liveStatus").innerText = "🔴 LIVE NOW";
+    } else {
+      document.getElementById("offlineOverlay").style.display = "block";
+    }
+  })
+  .catch(() => {
+    document.getElementById("offlineOverlay").style.display = "block";
+  });
 </script>
 
 </body>
