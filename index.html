@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wispvelvet | Soft Goth Dreamer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    body { background: #0a0519; font-family: 'Inter', system-ui, sans-serif; }
+    .gothic { font-family: 'Cinzel', serif; }
+    .mist { background: radial-gradient(circle at 50% 30%, rgba(192, 38, 211, 0.22), transparent 65%); }
+    canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; opacity: 0.65; }
+    
+    .anime-girl {
+      animation: float 28s ease-in-out infinite;
+      filter: drop-shadow(0 0 50px rgba(192, 38, 211, 0.5));
+    }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-35px) rotate(2deg); } }
+  </style>
+</head>
+<body class="text-purple-100 overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full z-50 border-b border-purple-900/50 backdrop-blur-md bg-[#0a0519]/95">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <h1 class="gothic text-2xl tracking-widest">wispvelvet</h1>
+      
+      <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+        <a href="#about" class="hover:text-purple-300 transition">About</a>
+        <a href="#streams" class="hover:text-purple-300 transition">Streams</a>
+        <a href="#schedule" class="hover:text-purple-300 transition">Schedule</a>
+        <a href="#gallery" class="hover:text-purple-300 transition">Gallery</a>
+        <a href="#rules" class="hover:text-purple-300 transition">Rules</a>
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden text-3xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0a0519] border-t border-purple-900/50 py-6">
+      <div class="flex flex-col items-center space-y-6 text-lg">
+        <a href="#about" class="hover:text-purple-300">About</a>
+        <a href="#streams" class="hover:text-purple-300">Streams</a>
+        <a href="#schedule" class="hover:text-purple-300">Schedule</a>
+        <a href="#gallery" class="hover:text-purple-300">Gallery</a>
+        <a href="#rules" class="hover:text-purple-300">Rules</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center justify-center mist">
+    <canvas id="particles"></canvas>
+    
+    <img src="https://i.imgur.com/YOUR_ANIME_GIRL_LINK_HERE.png" 
+         alt="wispvelvet" 
+         class="anime-girl absolute top-1/3 right-10 w-64 md:w-80 opacity-90 hidden lg:block">
+
+    <div class="relative z-20 text-center px-6 max-w-3xl">
+      <h1 class="gothic text-7xl md:text-[8.5rem] font-bold tracking-tighter text-white mb-6">wispvelvet</h1>
+      <p class="text-xl md:text-2xl text-purple-300 tracking-wide mb-12">soft goth dreamer lost in moonlight</p>
+      <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })" 
+              class="px-12 py-5 border border-purple-400 rounded-full text-lg hover:bg-purple-500/10 transition-all">
+        Begin the Haunting
+      </button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-28 border-t border-purple-900/30">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="gothic text-5xl mb-10">Who is wispvelvet?</h2>
+      <p class="text-lg leading-relaxed text-purple-200">
+        A soft goth spirit drifting through moonlight and lace. I create calm, melancholic spaces for late night chats, cozy games, and gentle vibes.
+      </p>
+    </div>
+  </section>
+
+  <!-- STREAMS -->
+  <section id="streams" class="py-28 bg-black/40">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="gothic text-5xl mb-10">Live on Twitch</h2>
+      <p class="text-3xl text-purple-300 mb-6">@wispvelvet</p>
+      <p class="text-purple-400">Soft conversations • Atmospheric games • Moonlit ASMR • Chill goth vibes</p>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" class="py-28">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="gothic text-5xl text-center mb-12">Schedule</h2>
+      <div class="grid md:grid-cols-3 gap-6 text-center">
+        <div class="bg-purple-950/30 p-8 rounded-3xl border border-purple-800/50">
+          <h3 class="text-purple-400">Tuesday</h3>
+          <p class="text-2xl mt-2">8PM – 12AM BST</p>
+        </div>
+        <div class="bg-purple-950/30 p-8 rounded-3xl border border-purple-800/50">
+          <h3 class="text-purple-400">Thursday</h3>
+          <p class="text-2xl mt-2">8PM – 12AM BST</p>
+        </div>
+        <div class="bg-purple-950/30 p-8 rounded-3xl border border-purple-800/50">
+          <h3 class="text-purple-400">Saturday</h3>
+          <p class="text-2xl mt-2">8PM – 12AM BST</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="py-28 bg-black/40">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="gothic text-5xl text-center mb-16">Moments in the Mist</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <img src="assets/images/1.jpg" class="rounded-2xl hover:scale-[1.03] transition duration-500" alt="">
+        <img src="assets/images/2.jpg" class="rounded-2xl hover:scale-[1.03] transition duration-500" alt="">
+        <img src="assets/images/3.jpg" class="rounded-2xl hover:scale-[1.03] transition duration-500" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section id="rules" class="py-28">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="gothic text-5xl text-center mb-12">Community Guidelines</h2>
+      <div class="space-y-5 text-lg text-purple-200">
+        <p>• Be kind and respectful to everyone</p>
+        <p>• No spam, caps, or self-promotion</p>
+        <p>• No drama or toxicity</p>
+        <p>• Keep chat relevant to the stream</p>
+        <p>• Have fun and haunt nicely 💜</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-16 text-center text-purple-500/70 text-sm">
+    © wispvelvet • made with moonlight & lace • 2025
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
