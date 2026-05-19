@@ -47,11 +47,12 @@ nav a {
     margin-left: 2rem;
     color: #e8d4ff;
     text-decoration: none;
+    transition: 0.3s;
 }
 
 nav a:hover { 
     color: var(--purple); 
-    text-shadow: 0 0 10px var(--purple);
+    text-shadow: 0 0 12px var(--purple);
 }
 
 /* SECTIONS */
@@ -109,7 +110,7 @@ h2 {
 
 /* CONTENT */
 .content {
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
     text-align: center;
     line-height: 1.8;
@@ -119,19 +120,21 @@ h2 {
 .stream-flex {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
     margin-top: 20px;
 }
 
 .player {
-    width: 700px;
+    width: 70%;
     height: 400px;
+    box-shadow: 0 0 30px rgba(192,132,252,0.4);
 }
 
 .chat {
-    width: 300px;
+    width: 30%;
     height: 400px;
+    box-shadow: 0 0 20px rgba(192,132,252,0.3);
 }
 
 .stream-wrapper {
@@ -148,11 +151,11 @@ iframe {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(10,5,20,0.85);
+    background: rgba(10,5,20,0.9);
     padding: 20px 30px;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(192,132,252,0.6);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(192,132,252,0.6);
     display: none;
     text-align: center;
 }
@@ -204,9 +207,17 @@ ul {
 }
 
 /* MOBILE */
-@media(max-width:768px) {
+@media(max-width:900px) {
+    .stream-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .player, .chat {
+        width: 100%;
+    }
+
     .hero h1 { font-size: 3.5rem; }
-    .player, .chat { width: 100%; }
 }
 </style>
 </head>
@@ -306,7 +317,7 @@ ul {
     </ul>
 </section>
 
-<!-- PARTICLES SCRIPT -->
+<!-- PARTICLES -->
 <script>
 function createParticle() {
     const p = document.createElement('div');
@@ -324,7 +335,7 @@ function createParticle() {
 setInterval(createParticle, 300);
 </script>
 
-<!-- LIVE STATUS SCRIPT -->
+<!-- LIVE STATUS -->
 <script>
 fetch("https://decapi.me/twitch/uptime/wispvelvet")
   .then(res => res.text())
