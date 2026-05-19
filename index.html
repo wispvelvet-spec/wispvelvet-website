@@ -68,7 +68,6 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
 }
 
 .hero h1 {
@@ -119,21 +118,22 @@ h2 {
 /* STREAM LAYOUT */
 .stream-flex {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
     align-items: flex-start;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .player {
-    width: 70%;
-    height: 400px;
+    width: 640px;
+    height: 360px;
     box-shadow: 0 0 30px rgba(192,132,252,0.4);
 }
 
 .chat {
-    width: 30%;
-    height: 400px;
+    width: 350px;
+    height: 360px;
     box-shadow: 0 0 20px rgba(192,132,252,0.3);
 }
 
@@ -143,6 +143,19 @@ h2 {
 
 iframe {
     border-radius: 20px;
+    border: none;
+}
+
+/* DISCORD ISLAND */
+.discord-island {
+    width: 400px;
+    height: 500px;
+    margin: 40px auto 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(10,5,20,0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(192,132,252,0.4);
 }
 
 /* OFFLINE OVERLAY */
@@ -237,19 +250,16 @@ ul {
     </nav>
 </header>
 
-<!-- HERO -->
 <section id="home" class="hero">
     <h1>WISPVELVET</h1>
     <p>soft goth dreamer lost in moonlight</p>
     <a href="#stream" class="btn">Watch Me Live</a>
 </section>
 
-<!-- STREAM -->
 <section id="stream">
     <h2>Live Stream</h2>
     <div class="content">
         <p>Join me live in the velvet night ♡</p>
-
         <p id="liveStatus">⚫ Offline</p>
 
         <div class="stream-flex">
@@ -273,10 +283,17 @@ ul {
             </iframe>
 
         </div>
+
+        <!-- DISCORD -->
+        <div class="discord-island">
+            <iframe
+              src="https://discord.com/widget?id=1506283515585626243&theme=dark">
+            </iframe>
+        </div>
+
     </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
     <h2>About Me</h2>
     <div class="content">
@@ -286,7 +303,6 @@ ul {
     </div>
 </section>
 
-<!-- SCHEDULE -->
 <section id="schedule">
     <h2>Schedule</h2>
     <div class="content">
@@ -295,7 +311,6 @@ ul {
     </div>
 </section>
 
-<!-- LINKS -->
 <section id="links">
     <h2>Join Me</h2>
     <div class="content">
@@ -306,7 +321,6 @@ ul {
     </div>
 </section>
 
-<!-- RULES -->
 <section id="rules">
     <h2>Chat Rules</h2>
     <ul>
@@ -317,7 +331,6 @@ ul {
     </ul>
 </section>
 
-<!-- PARTICLES -->
 <script>
 function createParticle() {
     const p = document.createElement('div');
@@ -335,20 +348,30 @@ function createParticle() {
 setInterval(createParticle, 300);
 </script>
 
-<!-- LIVE STATUS -->
 <script>
-fetch("https://decapi.me/twitch/uptime/wispvelvet")
-  .then(res => res.text())
-  .then(data => {
-    if (!data.includes("offline")) {
-      document.getElementById("liveStatus").innerText = "🔴 LIVE NOW";
+async function checkLive() {
+  try {
+    const res = await fetch("https://decapi.me/twitch/uptime/wispvelvet");
+    const data = await res.text();
+
+    const status = document.getElementById("liveStatus");
+    const overlay = document.getElementById("offlineOverlay");
+
+    if (data.toLowerCase().includes("offline")) {
+      status.innerText = "⚫ Offline";
+      overlay.style.display = "block";
     } else {
-      document.getElementById("offlineOverlay").style.display = "block";
+      status.innerText = "🔴 LIVE NOW";
+      overlay.style.display = "none";
     }
-  })
-  .catch(() => {
+
+  } catch {
     document.getElementById("offlineOverlay").style.display = "block";
-  });
+  }
+}
+
+checkLive();
+setInterval(checkLive, 60000);
 </script>
 
 </body>
