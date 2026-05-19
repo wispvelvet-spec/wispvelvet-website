@@ -4,51 +4,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WispVelvet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #8b5cf6;
+            --dark: #0a0514;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: #e8d4ff;
+            overflow-x: hidden;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: #c084fc;
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.6); opacity: 0.3; }
+            100% { transform: translateY(-100px) scale(1.4); opacity: 0; }
+        }
+
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.5rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 5, 20, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            color: #d8b4fe;
+        }
+
+        nav a {
+            color: #e8d4ff;
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: #c084fc; }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 140px 8% 100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 7.5rem;
+            letter-spacing: 12px;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 80px rgba(192, 132, 252, 0.8);
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            max-width: 720px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 18px 60px;
+            border: 2px solid #c084fc;
+            color: #e8d4ff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: all 0.4s;
+        }
+
+        .btn:hover {
+            background: #c084fc;
+            color: #0a0514;
+            box-shadow: 0 0 50px rgba(192, 132, 252, 0.9);
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #d8b4fe;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 1.15rem;
+        }
+    </style>
 </head>
 <body>
 
     <div class="particles" id="particles"></div>
 
     <header>
-        <h2>WispVelvet</h2>
+        <div class="logo">WISPVELVET</div>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="schedule.html">Schedule</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="rules.html">Rules</a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#rules">Rules</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <!-- HERO -->
+    <section id="home" class="hero">
         <div>
             <h1>WISPVELVET</h1>
             <p>soft goth dreamer lost in moonlight</p>
-            <a href="about.html" class="btn">Enter the Velvet Night</a>
+            <a href="#about" class="btn">Enter the Velvet Night</a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="content">
+            <p>A velvet wisp drifting through the night.</p>
+            <p>I'm a soft-spoken goth girl who loves deep conversations, cozy chaos, story-rich games, and sharing quiet moments in the moonlight.</p>
+            <p>Welcome to my little corner of the internet. Come stay a while 🌹</p>
+        </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule">
+        <h2>Schedule</h2>
+        <div class="content" style="text-align:center;">
+            <p style="font-size:1.4rem; margin:2rem 0;">
+                🖤 Streaming every <strong>Monday, Wednesday & Friday</strong> at 8PM
+            </p>
+            <p>Times in your local timezone.</p>
+            <p style="margin-top:3rem; opacity:0.8;">
+                Sometimes I appear for surprise late-night streams when the mood hits.<br>
+                Turn on notifications so you never miss me.
+            </p>
+        </div>
+    </section>
+
+    <!-- RULES -->
+    <section id="rules">
+        <h2>Chat Rules</h2>
+        <div class="content" style="max-width:700px;">
+            <ul style="font-size:1.2rem; line-height:2.4;">
+                <li>Be kind and respectful</li>
+                <li>No spoilers or heavy backseating unless asked</li>
+                <li>No hate, drama, or toxicity</li>
+                <li>Keep the velvet garden peaceful 🌹</li>
+                <li>Have fun and enjoy the night</li>
+            </ul>
+            <p style="text-align:center; margin-top:4rem; opacity:0.7;">
+                Break the rules = timeout or ban
+            </p>
         </div>
     </section>
 
     <script>
-        // Simple floating particles
+        // Floating Particles
         function createParticle() {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
+            const p = document.createElement('div');
+            p.classList.add('particle');
             
-            const size = Math.random() * 5 + 2;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}vw`;
-            particle.style.animationDuration = `${Math.random() * 20 + 15}s`;
-            particle.style.opacity = Math.random() * 0.5 + 0.2;
+            const size = Math.random() * 6 + 3;
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            p.style.left = `${Math.random() * 100}vw`;
+            p.style.animationDuration = `${Math.random() * 25 + 18}s`;
+            p.style.opacity = Math.random() * 0.5 + 0.25;
             
-            document.getElementById('particles').appendChild(particle);
+            document.getElementById('particles').appendChild(p);
             
-            setTimeout(() => particle.remove(), 40000);
+            setTimeout(() => p.remove(), 50000);
         }
 
-        setInterval(createParticle, 150);
+        setInterval(createParticle, 120);
+        
+        // Create initial particles
+        for(let i = 0; i < 40; i++) {
+            setTimeout(createParticle, i * 80);
+        }
     </script>
 
 </body>
