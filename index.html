@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+index.html<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,8 +7,219 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-<!-- LINKED CSS -->
-<link rel="stylesheet" href="style.css">
+<style>
+:root {
+    --purple: #c084fc;
+    --dark: #0a0514;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: #e8d4ff;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,5,20,0.9);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+}
+
+nav a {
+    margin-left: 2rem;
+    color: #e8d4ff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav a:hover { 
+    color: var(--purple); 
+    text-shadow: 0 0 12px var(--purple);
+}
+
+/* SECTIONS */
+section {
+    min-height: 100vh;
+    padding: 120px 8% 80px;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.hero h1 {
+    font-family: 'Cinzel';
+    font-size: 6rem;
+    letter-spacing: 10px;
+    text-shadow: 0 0 80px rgba(192,132,252,0.7);
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin: 1rem 0 2rem;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    padding: 16px 50px;
+    border: 2px solid var(--purple);
+    border-radius: 50px;
+    text-decoration: none;
+    color: #e8d4ff;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--purple);
+    color: #0a0514;
+    box-shadow: 0 0 40px rgba(192,132,252,0.8);
+}
+
+/* TITLES */
+h2 {
+    font-family: 'Cinzel';
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* CONTENT */
+.content {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* STREAM LAYOUT */
+.stream-flex {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.player {
+    width: 70%;
+    height: 400px;
+    box-shadow: 0 0 30px rgba(192,132,252,0.4);
+}
+
+.chat {
+    width: 30%;
+    height: 400px;
+    box-shadow: 0 0 20px rgba(192,132,252,0.3);
+}
+
+.stream-wrapper {
+    position: relative;
+}
+
+iframe {
+    border-radius: 20px;
+}
+
+/* OFFLINE OVERLAY */
+.offline-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10,5,20,0.9);
+    padding: 20px 30px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(192,132,252,0.6);
+    display: none;
+    text-align: center;
+}
+
+/* LINKS */
+.link-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* RULES */
+ul {
+    text-align: left;
+    max-width: 600px;
+    margin: auto;
+    line-height: 2;
+}
+
+/* LIVE STATUS */
+#liveStatus {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* PARTICLES */
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: var(--purple);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(-100px); opacity: 0; }
+}
+
+/* MOBILE */
+@media(max-width:900px) {
+    .stream-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .player, .chat {
+        width: 100%;
+    }
+
+    .hero h1 { font-size: 3.5rem; }
+}
+</style>
 </head>
 
 <body>
@@ -26,23 +237,28 @@
     </nav>
 </header>
 
+<!-- HERO -->
 <section id="home" class="hero">
     <h1>WISPVELVET</h1>
     <p>soft goth dreamer lost in moonlight</p>
     <a href="#stream" class="btn">Watch Me Live</a>
 </section>
 
+<!-- STREAM -->
 <section id="stream">
     <h2>Live Stream</h2>
     <div class="content">
         <p>Join me live in the velvet night ♡</p>
+
         <p id="liveStatus">⚫ Offline</p>
 
         <div class="stream-flex">
+
             <div class="stream-wrapper">
-                <iframe class="player"
-                    src="https://player.twitch.tv/?channel=wispvelvet&parent=wispvelvet-spec.github.io"
-                    allowfullscreen>
+                <iframe
+                  class="player"
+                  src="https://player.twitch.tv/?channel=wispvelvet&parent=wispvelvet-spec.github.io"
+                  allowfullscreen>
                 </iframe>
 
                 <div class="offline-overlay" id="offlineOverlay">
@@ -51,18 +267,16 @@
                 </div>
             </div>
 
-            <iframe class="chat"
-                src="https://www.twitch.tv/embed/wispvelvet/chat?parent=wispvelvet-spec.github.io">
+            <iframe
+              class="chat"
+              src="https://www.twitch.tv/embed/wispvelvet/chat?parent=wispvelvet-spec.github.io">
             </iframe>
-        </div>
 
-        <!-- DISCORD -->
-        <div class="discord-island">
-            <iframe src="https://discord.com/widget?id=1506283515585626243&theme=dark"></iframe>
         </div>
     </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
     <h2>About Me</h2>
     <div class="content">
@@ -72,6 +286,7 @@
     </div>
 </section>
 
+<!-- SCHEDULE -->
 <section id="schedule">
     <h2>Schedule</h2>
     <div class="content">
@@ -80,6 +295,7 @@
     </div>
 </section>
 
+<!-- LINKS -->
 <section id="links">
     <h2>Join Me</h2>
     <div class="content">
@@ -90,6 +306,7 @@
     </div>
 </section>
 
+<!-- RULES -->
 <section id="rules">
     <h2>Chat Rules</h2>
     <ul>
@@ -100,8 +317,39 @@
     </ul>
 </section>
 
-<!-- LINKED JS -->
-<script src="script.js"></script>
+<!-- PARTICLES -->
+<script>
+function createParticle() {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+
+    const size = Math.random() * 5 + 2;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + 'vw';
+
+    document.getElementById('particles').appendChild(p);
+
+    setTimeout(() => p.remove(), 20000);
+}
+setInterval(createParticle, 300);
+</script>
+
+<!-- LIVE STATUS -->
+<script>
+fetch("https://decapi.me/twitch/uptime/wispvelvet")
+  .then(res => res.text())
+  .then(data => {
+    if (!data.includes("offline")) {
+      document.getElementById("liveStatus").innerText = "🔴 LIVE NOW";
+    } else {
+      document.getElementById("offlineOverlay").style.display = "block";
+    }
+  })
+  .catch(() => {
+    document.getElementById("offlineOverlay").style.display = "block";
+  });
+</script>
 
 </body>
 </html>
