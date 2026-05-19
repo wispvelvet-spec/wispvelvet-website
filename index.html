@@ -6,10 +6,15 @@
     <title>WispVelvet</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        :root { --purple: #8b5cf6; --dark: #0a0514; }
-        
+        :root {
+            --purple: #8b5cf6;
+            --dark: #0a0514;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Inter', sans-serif;
             background: var(--dark);
@@ -17,6 +22,7 @@
             overflow-x: hidden;
         }
 
+        /* Particles */
         .particles {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -28,14 +34,21 @@
             position: absolute;
             background: #c084fc;
             border-radius: 50%;
-            animation: float linear infinite;
+            opacity: 0;
+            animation: float linear infinite, fadeInOut linear infinite;
         }
 
         @keyframes float {
-            0% { transform: translateY(100vh) scale(0.6); opacity: 0.3; }
-            100% { transform: translateY(-100px) scale(1.4); opacity: 0; }
+            0% { transform: translateY(100vh) scale(0.6); }
+            100% { transform: translateY(-100px) scale(1.4); }
         }
 
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Header */
         header {
             position: fixed;
             top: 0; width: 100%;
@@ -49,7 +62,12 @@
             border-bottom: 1px solid rgba(139, 92, 246, 0.2);
         }
 
-        .logo { font-family: 'Cinzel', serif; font-size: 2.1rem; letter-spacing: 4px; color: #d8b4fe; }
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2.1rem;
+            letter-spacing: 4px;
+            color: #d8b4fe;
+        }
 
         nav a {
             color: #e8d4ff;
@@ -60,9 +78,24 @@
 
         nav a:hover { color: #c084fc; }
 
+        /* Sections */
         section {
             min-height: 100vh;
             padding: 140px 8% 100px;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(to bottom, rgba(10,5,20,0.9), rgba(10,5,20,0.7));
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            padding: 0 8%;
             position: relative;
             z-index: 2;
         }
@@ -71,12 +104,24 @@
             font-family: 'Cinzel', serif;
             font-size: 7.5rem;
             letter-spacing: 12px;
-            text-shadow: 0 0 80px rgba(192, 132, 252, 0.8);
+            text-shadow: 0 0 80px rgba(192,132,252,0.8), 0 0 150px rgba(192,132,252,0.3);
+            animation: pulseGlow 3s infinite alternate;
         }
 
-        .hero p { font-size: 1.6rem; max-width: 720px; margin: 0 auto 3rem; opacity: 0.9; }
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 80px rgba(192,132,252,0.6), 0 0 150px rgba(192,132,252,0.2); }
+            100% { text-shadow: 0 0 120px rgba(192,132,252,1), 0 0 200px rgba(192,132,252,0.4); }
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            max-width: 720px;
+            opacity: 0.9;
+            margin: 1rem 0 2rem;
+        }
 
         .btn {
+            display: inline-block;
             padding: 18px 60px;
             border: 2px solid #c084fc;
             color: #e8d4ff;
@@ -84,12 +129,19 @@
             border-radius: 50px;
             font-size: 1.2rem;
             transition: all 0.4s;
+            animation: floatBtn 3s infinite alternate;
+            margin-top: 1rem;
         }
 
         .btn:hover {
             background: #c084fc;
             color: #0a0514;
-            box-shadow: 0 0 50px rgba(192, 132, 252, 0.9);
+            box-shadow: 0 0 50px rgba(192,132,252,0.9);
+        }
+
+        @keyframes floatBtn {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
         }
 
         h2 {
@@ -105,6 +157,17 @@
             margin: 0 auto;
             line-height: 1.8;
             font-size: 1.2rem;
+        }
+
+        ul {
+            line-height: 2.4;
+            font-size: 1.15rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 4.5rem; letter-spacing: 6px; }
+            nav a { margin-left: 1.2rem; }
         }
     </style>
 </head>
@@ -124,11 +187,9 @@
 
     <!-- HERO -->
     <section id="home" class="hero">
-        <div>
-            <h1>WISPVELVET</h1>
-            <p>soft goth dreamer lost in moonlight</p>
-            <a href="#about" class="btn">Enter the Velvet Night</a>
-        </div>
+        <h1>WISPVELVET</h1>
+        <p>soft goth dreamer lost in moonlight</p>
+        <a href="#about" class="btn">Enter the Velvet Night</a>
     </section>
 
     <!-- ABOUT -->
@@ -158,7 +219,7 @@
     <section id="rules">
         <h2>Chat Rules</h2>
         <div class="content" style="max-width:700px; margin:0 auto;">
-            <ul style="line-height:2.4; font-size:1.15rem;">
+            <ul>
                 <li>Be kind and respectful</li>
                 <li>No spoilers or heavy backseating unless I ask</li>
                 <li>No hate, drama, or toxicity</li>
@@ -171,6 +232,7 @@
         </div>
     </section>
 
+    <!-- PARTICLE SCRIPT -->
     <script>
         function createParticle() {
             const p = document.createElement('div');
@@ -179,10 +241,10 @@
             p.style.width = `${size}px`;
             p.style.height = `${size}px`;
             p.style.left = `${Math.random() * 100}vw`;
-            p.style.animationDuration = `${Math.random() * 25 + 18}s`;
-            p.style.opacity = Math.random() * 0.5 + 0.25;
+            const duration = Math.random() * 25 + 18;
+            p.style.animationDuration = `${duration}s, ${duration}s`;
             document.getElementById('particles').appendChild(p);
-            setTimeout(() => p.remove(), 50000);
+            setTimeout(() => p.remove(), duration * 1000);
         }
 
         setInterval(createParticle, 120);
